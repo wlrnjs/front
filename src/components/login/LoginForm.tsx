@@ -26,6 +26,7 @@ const LoginForm = () => {
   });
 
   const emailValue = watch("email");
+  const passwordValue = watch("password");
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data: LoginFormData) => {
@@ -34,6 +35,10 @@ const LoginForm = () => {
 
   const clearEmail = () => {
     setValue("email", "", { shouldValidate: true });
+  };
+
+  const clearPassword = () => {
+    setValue("password", "", { shouldValidate: true });
   };
 
   const togglePasswordVisibility = () => {
@@ -47,7 +52,7 @@ const LoginForm = () => {
         <div className="flex flex-col gap-2">
           <label
             htmlFor="email"
-            className="text-[18px] font-normal leading-[25.2px] tracking-[-0.36px] text-fgGrayDefault"
+            className="text-[18px] leading-[25.2px] tracking-[-0.36px] text-fgGrayDefault"
           >
             이메일
           </label>
@@ -61,7 +66,7 @@ const LoginForm = () => {
               className={cn(
                 "w-full h-[48px] px-3 rounded-[10px] bg-fillGrayDefault focus:border focus:border-borderPrimary",
                 errors.email ? "border-[#F0424B]" : "border-borderDefault",
-                emailValue && "pr-10" // 버튼 공간 확보
+                emailValue && "pr-10"
               )}
               placeholder="이메일을 입력해주세요."
             />
@@ -81,7 +86,7 @@ const LoginForm = () => {
         <div className="flex flex-col gap-2">
           <label
             htmlFor="password"
-            className="text-[18px] font-normal leading-[25.2px] tracking-[-0.36px] text-fgGrayDefault"
+            className="text-[18px] leading-[25.2px] tracking-[-0.36px] text-fgGrayDefault"
           >
             비밀번호
           </label>
@@ -97,28 +102,30 @@ const LoginForm = () => {
                 },
               })}
               className={cn(
-                "w-full h-[48px] px-3 rounded-[10px] bg-fillGrayDefault focus:border focus:border-borderPrimary",
+                "w-full min-h-[48px] px-3 rounded-[10px] bg-fillGrayDefault focus:border focus:border-borderPrimary",
                 errors.password ? "border-[#F0424B]" : "border-borderDefault",
-                "pr-10"
+                passwordValue && "pr-10"
               )}
               placeholder="비밀번호를 입력해주세요."
             />
-            <button
-              type="button"
-              onClick={togglePasswordVisibility}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2"
-            >
-              <CustomIcon
-                icon="PASSWORD_EYE_SVG"
-                className="w-[24px] h-[24px]"
-              />
-            </button>
+            {passwordValue && (
+              <div className="flex gap-[10px] absolute right-2 top-1/2 transform -translate-y-1/2">
+                <button type="button" onClick={togglePasswordVisibility}>
+                  {!showPassword ? (
+                    <CustomIcon icon="EYE_SVG" className="w-[24px] h-[24px]" />
+                  ) : (
+                    <CustomIcon
+                      icon="CLOSE_EYE_SVG"
+                      className="w-[24px] h-[24px]"
+                    />
+                  )}
+                </button>
+                <button type="button" onClick={clearPassword}>
+                  <CustomIcon icon="CLOSE_SVG" className="w-[24px] h-[24px]" />
+                </button>
+              </div>
+            )}
           </div>
-          {errors.password && (
-            <p className="mt-1 text-sm text-red-500">
-              {errors.password.message}
-            </p>
-          )}
         </div>
 
         {/* 로그인 버튼 */}
@@ -126,7 +133,7 @@ const LoginForm = () => {
           type="submit"
           disabled={!isValid}
           className={cn(
-            "w-full h-[48px] px-3 rounded-[10px] font-semibold text-white transition-colors duration-200",
+            "w-full min-h-[48px] px-3 rounded-[10px] font-semibold text-white transition-colors duration-200",
             isValid
               ? "bg-fillPrimaryDefault"
               : "bg-fillPrimaryDisabled cursor-not-allowed"
