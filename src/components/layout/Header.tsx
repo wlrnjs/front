@@ -13,7 +13,7 @@ const Header = () => {
             href={"/"}
             className="flex items-center gap-[0.5rem] cursor-pointer"
           >
-            <CustomIcon icon="NEW_SVG" className="w-[1.5rem] h-[1.5rem]" />
+            <CustomIcon icon="LOGO_SVG" className="w-[1.5rem] h-[1.5rem]" />
             <p className="text-[1.25rem] font-bold uppercase">GameBid</p>
           </Link>
           <ul className="flex items-center gap-[2.75rem]">
