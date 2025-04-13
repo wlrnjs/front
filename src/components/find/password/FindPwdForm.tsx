@@ -53,7 +53,7 @@ const FindPwdForm = ({ onSuccess }: FindPwdFormProps) => {
     { id: 2, placeholder: "0000", maxLength: 4 },
   ];
 
-  const onSubmit = (data: FindPwdFormData) => {
+  const onSubmit = () => {
     console.log("비밀번호 찾기 버튼 클릭");
 
     onSuccess();

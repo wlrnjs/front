@@ -7,7 +7,7 @@ import React from "react";
 const NAV_LINKS = [
   { href: "/find/email", text: "아이디 찾기" },
   { href: "/find/password", text: "비밀번호 찾기" },
-  { href: "/join", text: "회원가입" },
+  { href: "/signup", text: "회원가입" },
 ];
 
 const SOCIAL_LINKS = [
