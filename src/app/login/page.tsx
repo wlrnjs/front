@@ -41,6 +41,7 @@ const Page = () => {
           {SOCIAL_LINKS.map((social) => (
             <Link key={social.href} href={social.href}>
               <div className="w-[48px] h-[48px] flex-center rounded-full bg-fillGrayDefault">
+                {/* 이미지 > SVG 변환 예정 */}
                 <Image src={social.link} alt="social" width={24} height={24} />
               </div>
             </Link>

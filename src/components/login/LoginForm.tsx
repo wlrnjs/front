@@ -112,7 +112,7 @@ const LoginForm = () => {
               <div className="flex gap-[10px] absolute right-2 top-1/2 transform -translate-y-1/2">
                 <button type="button" onClick={togglePasswordVisibility}>
                   {!showPassword ? (
-                    <CustomIcon icon="EYE_SVG" className="w-[24px] h-[24px]" />
+                    <CustomIcon icon="EYE_SVG" className="w-[24px] h-[24px]" /> // SVG 수정 예정
                   ) : (
                     <CustomIcon
                       icon="CLOSE_EYE_SVG"
@@ -133,10 +133,10 @@ const LoginForm = () => {
           type="submit"
           disabled={!isValid}
           className={cn(
-            "w-full min-h-[48px] px-3 rounded-[10px] font-semibold text-white transition-colors duration-200",
+            "w-full min-h-[48px] px-3 rounded-[10px] font-semibold transition-colors duration-200",
             isValid
-              ? "bg-fillPrimaryDefault"
-              : "bg-fillPrimaryDisabled cursor-not-allowed"
+              ? "bg-fillPrimaryDefault text-white"
+              : "bg-fillPrimaryDisabled text-fgPrimaryDisabled cursor-not-allowed"
           )}
         >
           로그인
