@@ -5,7 +5,8 @@ const Page = () => {
   return (
     <div className="flex-center h-screen">
       <div className="">
-        <CustomIcon icon="NEW_SVG" className="w-[32px] h-[32px]" /> {/* 예시 */}
+        <CustomIcon icon="LOGO_SVG" className="w-[32px] h-[32px]" />{" "}
+        {/* 예시 */}
       </div>
     </div>
   );

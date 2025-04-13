@@ -1,5 +1,5 @@
 const ICONS = {
-  NEW_SVG: {
+  LOGO_SVG: {
     svgOptions: {
       viewBox: "0 0 24 24",
     },
@@ -10,7 +10,6 @@ const ICONS = {
       />
     ),
   },
-  // 아래 계속 추가
   GNB1: {
     svgOptions: {
       viewBox: "0 0 24 24",
@@ -49,6 +48,39 @@ const ICONS = {
         stroke="#CDCDCD"
         stroke-width="2"
         stroke-linecap="round"
+      />
+    ),
+  },
+  CLOSE_SVG: {
+    svgOptions: {
+      viewBox: "0 0 24 25",
+    },
+    icon: (
+      <>
+        <path
+          d="M16 8.56897L8 16.569"
+          stroke="#CDCDCD"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+        <path
+          d="M16 16.569L8 8.56897"
+          stroke="#CDCDCD"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+      </>
+    ),
+  },
+  PASSWORD_EYE_SVG: {
+    svgOptions: {
+      viewBox: "0 0 24 25",
+    },
+    icon: (
+      <path
+        d="M14.3999 12.5982C14.3999 13.8879 13.3254 14.9335 11.9999 14.9335C10.6744 14.9335 9.5999 13.8879 9.5999 12.5982C9.5999 11.3084 10.6744 10.2628 11.9999 10.2628C13.3254 10.2628 14.3999 11.3084 14.3999 12.5982Z"
+        stroke="#CDCDCD"
+        strokeWidth="2"
       />
     ),
   },
