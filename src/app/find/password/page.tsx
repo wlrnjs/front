@@ -1,7 +1,21 @@
-import React from "react";
+"use client";
+
+import FindPwdForm from "@/components/find/password/FindPwdForm";
+import FindPwdResult from "@/components/find/password/FindPwdResult";
+import React, { useState } from "react";
 
 const Page = () => {
-  return <div>비밀번호찾기페이지입니다</div>;
+  const [showResult, setShowResult] = useState(false);
+
+  return (
+    <div>
+      {!showResult ? (
+        <FindPwdForm onSuccess={() => setShowResult(true)} />
+      ) : (
+        <FindPwdResult />
+      )}
+    </div>
+  );
 };
 
 export default Page;

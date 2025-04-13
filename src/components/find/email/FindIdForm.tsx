@@ -2,9 +2,9 @@
 
 import { cn } from "@/_utils/clsx";
 import CustomIcon from "@/Icons";
-import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
+import NextFind from "../NextFind";
 
 interface FindIdFormData {
   name: string;
@@ -159,14 +159,7 @@ const FindIdForm = ({ onSuccess }: FindIdFormProps) => {
           이메일 찾기
         </button>
       </form>
-      <div className="flex justify-center">
-        <Link
-          href="/login"
-          className="min-w-[96px] h-[32px] px-3 text-[16px] leading-[22.4px] tracking-[-0.32px] text-fgGrayDefault whitespace-nowrap"
-        >
-          <p>다음에 찾기</p>
-        </Link>
-      </div>
+      <NextFind />
     </>
   );
 };
