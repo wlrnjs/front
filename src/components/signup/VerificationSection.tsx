@@ -1,16 +1,84 @@
-const VerificationSection = () => {
+"use client";
+
+import { SignUpFormData } from "@/_types/signup/SignUpFormData";
+import { useEffect, useState } from "react";
+import { UseFormRegister } from "react-hook-form";
+import { cn } from "@/_utils/clsx";
+
+interface VerificationSectionProps {
+  register: UseFormRegister<SignUpFormData>;
+  active: boolean;
+  watch?: string;
+}
+
+const VerificationSection = ({
+  register,
+  active,
+  watch,
+}: VerificationSectionProps) => {
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [isVerified, setIsVerified] = useState(false);
+  const disabled = isVerified || timeLeft === 0 || watch?.length !== 6;
+
+  useEffect(() => {
+    if (active) {
+      setTimeLeft(300);
+    }
+  }, [active]);
+
+  useEffect(() => {
+    if (timeLeft <= 0) return;
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft]);
+
+  const formatTime = (seconds: number) => {
+    const min = String(Math.floor(seconds / 60)).padStart(2, "0");
+    const sec = String(seconds % 60).padStart(2, "0");
+    return `${min}:${sec}`;
+  };
+
+  const handleVerifyClick = () => {
+    if (watch?.length !== 6) return;
+    setIsVerified(true);
+  };
+
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor="verify-code">인증번호</label>
+      <div className="flex gap-2 items-center">
+        <label htmlFor="verify-code">인증번호</label>
+        {active && timeLeft > 0 && (
+          <p className="text-[14px] leading-[19.6px] tracking-[-0.28px] text-[#F0424B]">
+            남은 시간: {formatTime(timeLeft)}
+          </p>
+        )}
+      </div>
       <div className="flex gap-2">
         <input
-          type="tel"
-          className="h-[48px] px-3 w-full rounded-[12px] bg-fillGrayDefault"
+          type="text"
+          inputMode="numeric"
+          maxLength={6}
+          {...register("checkedEmailNumber", {
+            required: true,
+            validate: (value) => /^\d{6}$/.test(value),
+          })}
+          className="h-[48px] px-3 w-full rounded-[12px] bg-fillGrayDefault focus:border focus:border-borderPrimary"
           placeholder="인증번호를 입력해주세요."
         />
         <button
           type="button"
-          className="h-[48px] px-3 rounded-[12px] bg-fillGrayDisabled text-fgGrayDisabled whitespace-nowrap"
+          onClick={handleVerifyClick}
+          disabled={disabled}
+          className={cn(
+            "h-[48px] px-3 rounded-[12px] whitespace-nowrap",
+            !watch || disabled
+              ? "bg-fillGrayDisabled text-fgGrayDisabled"
+              : "bg-fillGrayDefault text-fgGrayDefault"
+          )}
         >
           인증하기
         </button>

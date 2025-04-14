@@ -1,7 +1,8 @@
 export interface SignUpFormData {
   email: string;
+  checkedEmailNumber: string;
   password: string;
-  checkPassword: string;
+  checkedPassword: string;
   name: string;
   phoneNum: {
     first: number;
