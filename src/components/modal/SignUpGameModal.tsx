@@ -7,11 +7,13 @@ import { createPortal } from "react-dom";
 interface SignUpGameModalProps {
   onSelectGame?: (game: string) => void;
   activeModal: boolean;
+  onClose: () => void;
 }
 
 const SignUpGameModal = ({
   onSelectGame,
   activeModal,
+  onClose,
 }: SignUpGameModalProps) => {
   useEffect(() => {
     if (activeModal) {
@@ -23,10 +25,9 @@ const SignUpGameModal = ({
     };
   }, [activeModal]);
 
-  // 모달 외부 클릭 시 닫기
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      onSelectGame?.(""); // 또는 onClose?.() 형식으로 외부에서 상태 조절
+      onClose();
     }
   };
 
@@ -65,7 +66,10 @@ const SignUpGameModal = ({
             {games.map((game) => (
               <li
                 key={game}
-                onClick={() => onSelectGame?.(game)}
+                onClick={() => {
+                  onSelectGame?.(game);
+                  onClose();
+                }}
                 className="flex items-center cursor-pointer w-full h-[48px] px-3 hover:w-full hover:bg-fillGrayHovered hover:rounded-[12px] rounded-[8px]"
               >
                 {game}
