@@ -98,6 +98,35 @@ const ICONS = {
       />
     ),
   },
+  DROPDOWN_ARROW_SVG: {
+    svgOptions: {
+      viewBox: "0 0 24 24",
+    },
+    icon: (
+      <g opacity="0.75">
+        <path
+          d="M7 10L12.0008 14.58L17 10"
+          stroke="#CDCDCD"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+    ),
+  },
+  SEARCH_ICON_SVG: {
+    svgOptions: {
+      viewBox: "0 0 24 24",
+    },
+    icon: (
+      <path
+        d="M16.9265 17.04L20.3996 20.4M19.2796 11.44C19.2796 15.7699 15.7695 19.28 11.4396 19.28C7.1097 19.28 3.59961 15.7699 3.59961 11.44C3.59961 7.11006 7.1097 3.59998 11.4396 3.59998C15.7695 3.59998 19.2796 7.11006 19.2796 11.44Z"
+        stroke="#94949C"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    ),
+  },
 };
 
 export type IconList = keyof typeof ICONS;
