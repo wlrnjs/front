@@ -29,7 +29,7 @@ const EmailSection = ({ register, watch }: EmailSectionProps) => {
     <>
       <div className="flex flex-col gap-2">
         <label htmlFor="email" className="text-[18px] text-fgGrayDefault">
-          아이디
+          이메일
         </label>
         <div className="flex gap-2">
           <input

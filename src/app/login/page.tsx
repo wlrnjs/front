@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 const NAV_LINKS = [
-  { href: "/find/email", text: "아이디 찾기" },
+  { href: "/find/email", text: "이메일 찾기" },
   { href: "/find/password", text: "비밀번호 찾기" },
   { href: "/signup", text: "회원가입" },
 ];
