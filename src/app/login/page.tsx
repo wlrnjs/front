@@ -27,7 +27,7 @@ const Page = () => {
 
         <LoginForm />
 
-        <div className="w-full flex-center gap-5 text-[16px] font-normal leading-[22.4px] tracking-[-0.32px] text-fgGrayDefault">
+        <div className="w-full flex-center gap-5 text-[16px] font-normal leading-[1.4em] tracking-[-0.02em] text-fgGrayDefault">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="px-3">
               <p>{link.text}</p>

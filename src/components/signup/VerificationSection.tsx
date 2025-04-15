@@ -62,7 +62,7 @@ const VerificationSection = ({
       <div className="flex gap-2 items-center">
         <label htmlFor="verify-code">인증번호</label>
         {active && timeLeft > 0 && (
-          <p className="text-[14px] leading-[19.6px] tracking-[-0.28px] text-[#F0424B]">
+          <p className="text-[14px] leading-[1.4em] tracking-[-0.02em] text-systemFailed">
             남은 시간: {formatTime(timeLeft)}
           </p>
         )}

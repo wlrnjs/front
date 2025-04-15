@@ -11,7 +11,7 @@ interface LoginFormData {
 }
 
 const LABEL_STYLES =
-  "text-[18px] leading-[25.2px] tracking-[-0.36px] text-fgGrayDefault";
+  "text-[18px] leading-[1.4em] tracking-[-0.02em] text-fgGrayDefault";
 const INPUT_STYLES =
   "w-full h-[48px] px-3 rounded-[10px] bg-fillGrayDefault focus:border focus:border-borderPrimary";
 const BUTTON_ICON_STYLES = "w-[24px] h-[24px]";

@@ -46,7 +46,7 @@ const SignUpGameModal = ({
       className="fixed inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-start gap-4 z-50"
       onClick={handleOverlayClick}
     >
-      <p className="w-[600px] text-left text-[18px] leading-[25.2px] tracking-[-0.36px] text-fgGrayDefault">
+      <p className="w-[600px] text-left text-[18px] leading-[1.4em] tracking-[-0.02em] text-fgGrayDefault">
         게임 선택
       </p>
       <div className="w-[600px] px-8 flex flex-col gap-3 rounded-[12px] border border-fgPrimaryAccent bg-fillGrayDefault">
