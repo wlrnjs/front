@@ -1,12 +1,16 @@
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
 import CustomIcon from "@/Icons";
 import { useState } from "react";
-import { UseFormRegister, UseFormWatch } from "react-hook-form";
+import {
+  UseFormRegister,
+  UseFormSetValue,
+  UseFormWatch,
+} from "react-hook-form";
 
 interface ConfirmPasswordSectionProps {
   register: UseFormRegister<SignUpFormData>;
   watch: UseFormWatch<SignUpFormData>;
-  setValue: any;
+  setValue: UseFormSetValue<SignUpFormData>;
 }
 
 const ConfirmPasswordSection = ({
