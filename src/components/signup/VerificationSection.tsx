@@ -9,15 +9,21 @@ interface VerificationSectionProps {
   register: UseFormRegister<SignUpFormData>;
   active: boolean;
   watch?: string;
+  onVerifyStateChange: (state: {
+    isVerified: boolean;
+    timeLeft: number;
+  }) => void;
 }
 
 const VerificationSection = ({
   register,
   active,
   watch,
+  onVerifyStateChange,
 }: VerificationSectionProps) => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [isVerified, setIsVerified] = useState(false);
+  const isReadOnly = isVerified || timeLeft === 0;
   const disabled = isVerified || timeLeft === 0 || watch?.length !== 6;
 
   useEffect(() => {
@@ -35,6 +41,10 @@ const VerificationSection = ({
 
     return () => clearInterval(timer);
   }, [timeLeft]);
+
+  useEffect(() => {
+    onVerifyStateChange({ isVerified, timeLeft });
+  }, [isVerified, timeLeft, onVerifyStateChange]);
 
   const formatTime = (seconds: number) => {
     const min = String(Math.floor(seconds / 60)).padStart(2, "0");
@@ -66,8 +76,14 @@ const VerificationSection = ({
             required: true,
             validate: (value) => /^\d{6}$/.test(value),
           })}
-          className="h-[48px] px-3 w-full rounded-[12px] bg-fillGrayDefault focus:border focus:border-borderPrimary"
+          readOnly={isReadOnly}
           placeholder="인증번호를 입력해주세요."
+          className={cn(
+            "h-[48px] px-3 w-full rounded-[12px]",
+            isReadOnly
+              ? "bg-fillGrayDisabled text-fgGrayDisabled cursor-not-allowed"
+              : "bg-fillGrayDefault focus:border focus:border-borderPrimary"
+          )}
         />
         <button
           type="button"
