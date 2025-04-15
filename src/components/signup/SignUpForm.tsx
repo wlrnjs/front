@@ -35,7 +35,11 @@ const SignUpForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <EmailSection register={register} watch={watch} />
       <PasswordSection register={register} watch={watch} setValue={setValue} />
-      <ConfirmPasswordSection register={register} watch={watch} />
+      <ConfirmPasswordSection
+        register={register}
+        watch={watch}
+        setValue={setValue}
+      />
       <NameSection register={register} />
       <PhoneNumberSection register={register} />
       <BirthSection register={register} />
