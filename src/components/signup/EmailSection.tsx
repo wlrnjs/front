@@ -14,10 +14,15 @@ interface Props {
 const EmailSection = ({ register, watch }: Props) => {
   const email = watch("email");
   const emailNumber = watch("checkedEmailNumber");
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email || "");
   const [activeVerification, setActiveVerification] = useState(false);
+  const [isResent, setIsResent] = useState(false);
+  const [isInputLocked, setIsInputLocked] = useState(false);
 
   const handleVerificationSection = () => {
+    if (!isValidEmail) return;
     setActiveVerification(true);
+    setIsResent(true);
   };
 
   return (
@@ -31,21 +36,34 @@ const EmailSection = ({ register, watch }: Props) => {
             id="email"
             type="email"
             autoFocus
+            disabled={isInputLocked}
             placeholder="이메일을 입력해주세요."
-            className="h-[48px] px-3 w-full rounded-[12px] bg-fillGrayDefault focus:border focus:border-borderPrimary"
-            {...register("email")}
+            {...register("email", {
+              required: "이메일을 입력해주세요.",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "유효한 이메일 형식을 입력해주세요.",
+              },
+            })}
+            className={cn(
+              "h-[48px] px-3 w-full rounded-[12px] focus:border focus:border-borderPrimary",
+              isInputLocked
+                ? "bg-fillGrayDisabled text-fgGrayDisabled cursor-not-allowed"
+                : "bg-fillGrayDefault text-fgGrayFocused"
+            )}
           />
           <button
             type="button"
             onClick={handleVerificationSection}
+            disabled={!isValidEmail || isInputLocked}
             className={cn(
               "h-[48px] px-3 rounded-[12px] whitespace-nowrap",
-              !email
+              !isValidEmail || isInputLocked
                 ? "bg-fillGrayDisabled text-fgGrayDisabled"
                 : "bg-fillGrayDefault text-fgGrayDefault"
             )}
           >
-            인증번호 전송
+            {isResent ? "인증번호 재전송" : "인증번호 전송"}
           </button>
         </div>
       </div>
@@ -54,6 +72,9 @@ const EmailSection = ({ register, watch }: Props) => {
           active={activeVerification}
           watch={emailNumber}
           register={register}
+          onVerifyStateChange={({ isVerified, timeLeft }) => {
+            setIsInputLocked(isVerified || timeLeft === 0);
+          }}
         />
       )}
     </>

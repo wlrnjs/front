@@ -9,12 +9,17 @@ interface VerificationSectionProps {
   register: UseFormRegister<SignUpFormData>;
   active: boolean;
   watch?: string;
+  onVerifyStateChange: (state: {
+    isVerified: boolean;
+    timeLeft: number;
+  }) => void;
 }
 
 const VerificationSection = ({
   register,
   active,
   watch,
+  onVerifyStateChange,
 }: VerificationSectionProps) => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [isVerified, setIsVerified] = useState(false);
@@ -36,6 +41,10 @@ const VerificationSection = ({
 
     return () => clearInterval(timer);
   }, [timeLeft]);
+
+  useEffect(() => {
+    onVerifyStateChange({ isVerified, timeLeft });
+  }, [isVerified, timeLeft]);
 
   const formatTime = (seconds: number) => {
     const min = String(Math.floor(seconds / 60)).padStart(2, "0");
