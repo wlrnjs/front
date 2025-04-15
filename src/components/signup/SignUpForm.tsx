@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import EmailSection from "@/components/signup/EmailSection";
 import PasswordSection from "@/components/signup/PasswordSection";
-import ConfirmPasswordSection from "@/components/signup/ConfirmPasswordSection";
 import NameSection from "@/components/signup/NameSection";
 import PhoneNumberSection from "@/components/signup/PhoneNumberSection";
 import BirthSection from "@/components/signup/BirthSection";
@@ -35,11 +34,6 @@ const SignUpForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <EmailSection register={register} watch={watch} />
       <PasswordSection register={register} watch={watch} setValue={setValue} />
-      <ConfirmPasswordSection
-        register={register}
-        watch={watch}
-        setValue={setValue}
-      />
       <NameSection register={register} />
       <PhoneNumberSection register={register} />
       <BirthSection register={register} />
