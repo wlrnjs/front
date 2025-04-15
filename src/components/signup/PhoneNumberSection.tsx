@@ -1,4 +1,5 @@
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
+import React from "react";
 import { UseFormRegister } from "react-hook-form";
 
 const PhoneNumberSection = ({
@@ -19,7 +20,7 @@ const PhoneNumberSection = ({
       </label>
       <div className="flex gap-3 items-center">
         {inputProps.map(({ placeholder, maxLength, name }, index) => (
-          <>
+          <React.Fragment key={index}>
             <input
               type="text"
               className="w-1/3 h-[48px] px-3 text-center rounded-[12px] bg-fillGrayDefault focus:border focus:border-borderPrimary"
@@ -36,7 +37,7 @@ const PhoneNumberSection = ({
               }}
             />
             {index < inputProps.length - 1 && <p>-</p>}
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>
