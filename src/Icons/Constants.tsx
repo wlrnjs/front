@@ -177,6 +177,20 @@ const ICONS = {
       />
     ),
   },
+  CHECK_ICON_SVG: {
+    svgOptions: {
+      viewBox: "0 0 24 24",
+    },
+    icon: (
+      <path
+        d="M16.7992 8.40002L9.6397 15.6L7.19922 13.1457"
+        stroke="#EFEFF0"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+  },
 };
 
 export type IconList = keyof typeof ICONS;
