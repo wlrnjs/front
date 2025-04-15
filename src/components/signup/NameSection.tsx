@@ -30,7 +30,7 @@ const NameSection = ({ register, watch, setValue }: NameSectionProps) => {
           type="text"
           {...register("name")}
           placeholder="본인의 이름을 입력해주세요."
-          className="w-full h-[48px] px-3 rounded-[12px] bg-fillGrayDefault"
+          className="w-full h-[48px] px-3 rounded-[12px] bg-fillGrayDefault focus:border focus:border-borderPrimary"
         />
         {name && (
           <div className="flex gap-[10px] absolute right-2 top-1/2 transform -translate-y-1/2">

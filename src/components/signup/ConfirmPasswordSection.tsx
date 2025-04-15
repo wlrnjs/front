@@ -42,7 +42,7 @@ const ConfirmPasswordSection = ({
               value === watch("password") || "비밀번호가 일치하지 않습니다.",
           })}
           placeholder="비밀번호를 한 번 더 입력해주세요."
-          className="h-[48px] px-3 rounded-[12px] bg-fillGrayDefault w-full"
+          className="h-[48px] px-3 rounded-[12px] bg-fillGrayDefault w-full focus:border focus:border-borderPrimary"
         />
         {confirmPassword && (
           <div className="flex gap-[10px] absolute right-2 top-1/2 transform -translate-y-1/2">
