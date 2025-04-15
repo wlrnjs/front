@@ -11,6 +11,7 @@ import FavoriteGameSection from "@/components/signup/FavoriteGameSection";
 import AgreementSection from "@/components/signup/AgreementSection";
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
 import NextFind from "../find/NextFind";
+import SignUpGameModal from "../modal/SignUpGameModal";
 
 const SignUpForm = () => {
   const {
@@ -28,32 +29,46 @@ const SignUpForm = () => {
     console.log("회원가입 제출 데이터:", data);
   };
 
-  console.log(setValue, errors, isGameModalOpen, setFavoriteGame);
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-      <EmailSection register={register} watch={watch} />
-      <PasswordSection register={register} watch={watch} setValue={setValue} />
-      <NameSection register={register} watch={watch} setValue={setValue} />
-      <PhoneNumberSection register={register} />
-      <BirthSection register={register} />
-      <FavoriteGameSection
-        favoriteGame={favoriteGame}
-        setIsGameModalOpen={setIsGameModalOpen}
-        register={register}
-      />
-      <AgreementSection />
+    <>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+        <EmailSection register={register} watch={watch} />
+        <PasswordSection
+          register={register}
+          watch={watch}
+          setValue={setValue}
+        />
+        <NameSection register={register} watch={watch} setValue={setValue} />
+        <PhoneNumberSection register={register} />
+        <BirthSection register={register} />
+        <FavoriteGameSection
+          favoriteGame={favoriteGame}
+          setIsGameModalOpen={setIsGameModalOpen}
+          register={register}
+        />
+        <AgreementSection />
 
-      <div className="flex flex-col gap-5">
-        <button
-          type="submit"
-          className="w-full min-h-[48px] px-3 rounded-[12px] bg-fillPrimaryDisabled"
-        >
-          회원가입
-        </button>
-        <NextFind />
-      </div>
-    </form>
+        <div className="flex flex-col gap-5">
+          <button
+            type="submit"
+            className="w-full min-h-[48px] px-3 rounded-[12px] bg-fillPrimaryDisabled"
+          >
+            회원가입
+          </button>
+          <NextFind />
+        </div>
+      </form>
+      {isGameModalOpen && (
+        <SignUpGameModal
+          activeModal={isGameModalOpen}
+          onClose={() => setIsGameModalOpen(false)}
+          onSelectGame={(game) => {
+            setFavoriteGame(game);
+            setValue("favoriteGame", game);
+          }}
+        />
+      )}
+    </>
   );
 };
 
