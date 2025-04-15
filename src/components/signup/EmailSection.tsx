@@ -6,12 +6,12 @@ import { SignUpFormData } from "@/_types/signup/SignUpFormData";
 import VerificationSection from "./VerificationSection";
 import { useState } from "react";
 
-interface Props {
+interface EmailSectionProps {
   register: UseFormRegister<SignUpFormData>;
   watch: UseFormWatch<SignUpFormData>;
 }
 
-const EmailSection = ({ register, watch }: Props) => {
+const EmailSection = ({ register, watch }: EmailSectionProps) => {
   const email = watch("email");
   const emailNumber = watch("checkedEmailNumber");
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email || "");

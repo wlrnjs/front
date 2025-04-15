@@ -1,11 +1,15 @@
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegister, UseFormWatch } from "react-hook-form";
+
+interface ConfirmPasswordSectionProps {
+  register: UseFormRegister<SignUpFormData>;
+  watch: UseFormWatch<SignUpFormData>;
+}
 
 const ConfirmPasswordSection = ({
   register,
-}: {
-  register: UseFormRegister<SignUpFormData>;
-}) => {
+  watch,
+}: ConfirmPasswordSectionProps) => {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor="checkPassword" className="text-[18px] text-fgGrayDefault">
