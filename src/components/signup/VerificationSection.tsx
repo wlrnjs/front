@@ -44,7 +44,7 @@ const VerificationSection = ({
 
   useEffect(() => {
     onVerifyStateChange({ isVerified, timeLeft });
-  }, [isVerified, timeLeft]);
+  }, [isVerified, timeLeft, onVerifyStateChange]);
 
   const formatTime = (seconds: number) => {
     const min = String(Math.floor(seconds / 60)).padStart(2, "0");

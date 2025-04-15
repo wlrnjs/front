@@ -12,6 +12,8 @@ import AgreementSection from "@/components/signup/AgreementSection";
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
 import NextFind from "../find/NextFind";
 import SignUpGameModal from "../modal/SignUpGameModal";
+import { cn } from "@/_utils/clsx";
+import { useRouter } from "next/navigation";
 
 const SignUpForm = () => {
   const {
@@ -19,14 +21,16 @@ const SignUpForm = () => {
     handleSubmit,
     watch,
     setValue,
-    formState: { errors },
-  } = useForm<SignUpFormData>();
+    formState: { isValid },
+  } = useForm<SignUpFormData>({ mode: "onChange" });
 
+  const router = useRouter();
   const [favoriteGame, setFavoriteGame] = useState("");
   const [isGameModalOpen, setIsGameModalOpen] = useState(false);
 
   const onSubmit = (data: SignUpFormData) => {
     console.log("회원가입 제출 데이터:", data);
+    router.push("/");
   };
 
   return (
@@ -46,12 +50,23 @@ const SignUpForm = () => {
           setIsGameModalOpen={setIsGameModalOpen}
           register={register}
         />
-        <AgreementSection />
+        <AgreementSection
+          register={register}
+          setValue={setValue}
+          watch={watch}
+        />
 
         <div className="flex flex-col gap-5">
           <button
             type="submit"
-            className="w-full min-h-[48px] px-3 rounded-[12px] bg-fillPrimaryDisabled"
+            disabled={!isValid}
+            className={cn(
+              "w-full min-h-[48px] px-3 rounded-[12px]",
+              isValid
+                ? "bg-fillPrimaryDefault text-fgPrimaryDefault"
+                : "bg-fillPrimaryDisabled text-fgPrimaryDisabled",
+              "transition-colors"
+            )}
           >
             회원가입
           </button>

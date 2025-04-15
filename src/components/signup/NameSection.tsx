@@ -28,7 +28,7 @@ const NameSection = ({ register, watch, setValue }: NameSectionProps) => {
         <input
           id="name"
           type="text"
-          {...register("name")}
+          {...register("name", { required: true })}
           placeholder="본인의 이름을 입력해주세요."
           className="w-full h-[48px] px-3 rounded-[12px] bg-fillGrayDefault focus:border focus:border-borderPrimary"
         />

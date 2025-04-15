@@ -28,7 +28,7 @@ const PhoneNumberSection = ({
               maxLength={maxLength}
               inputMode="numeric"
               pattern="\d*"
-              {...register(name)}
+              {...register(name, { required: true })}
               onInput={(e) => {
                 e.currentTarget.value = e.currentTarget.value.replace(
                   /[^0-9]/g,
