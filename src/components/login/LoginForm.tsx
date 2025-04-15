@@ -58,7 +58,7 @@ const LoginForm = () => {
             })}
             className={cn(
               INPUT_STYLES,
-              errors.email ? "border-[#F0424B]" : "border-borderDefault",
+              errors.email ? "border-systemFailed" : "border-borderDefault",
               emailValue && "pr-10"
             )}
             placeholder="이메일을 입력해주세요."
@@ -89,7 +89,7 @@ const LoginForm = () => {
             })}
             className={cn(
               INPUT_STYLES,
-              errors.password ? "border-[#F0424B]" : "border-borderDefault",
+              errors.password ? "border-systemFailed" : "border-borderDefault",
               passwordValue && "pr-10"
             )}
             placeholder="비밀번호를 입력해주세요."

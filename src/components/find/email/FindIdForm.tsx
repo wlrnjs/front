@@ -82,7 +82,7 @@ const FindIdForm = ({ onSuccess }: FindIdFormProps) => {
               })}
               className={cn(
                 "w-full h-[48px] px-3 rounded-[10px] bg-fillGrayDefault focus:border focus:border-borderPrimary",
-                errors.name ? "border-[#F0424B]" : "border-borderDefault",
+                errors.name ? "border-systemFailed" : "border-borderDefault",
                 nameValue && "pr-10"
               )}
               placeholder="이름을 입력해주세요."
@@ -119,7 +119,7 @@ const FindIdForm = ({ onSuccess }: FindIdFormProps) => {
                       INPUT_NUMBER_STYLES,
                       "w-full",
                       errors.phoneNum?.[field.id]
-                        ? "border-[#F0424B]"
+                        ? "border-systemFailed"
                         : "border-borderDefault",
                       phoneNumValues?.[field.id] && "pr-10"
                     )}
