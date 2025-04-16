@@ -10,7 +10,7 @@ import {
   FieldErrors,
 } from "react-hook-form";
 import ConfirmPasswordSection from "./ConfirmPasswordSection";
-import Input from "../common/input/Input";
+import Input from "../common/input/TextInput";
 
 interface PasswordSectionProps {
   register: UseFormRegister<SignUpFormData>;

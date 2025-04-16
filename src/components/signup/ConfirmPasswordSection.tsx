@@ -1,7 +1,7 @@
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
 import CustomIcon from "@/Icons";
 import { useState } from "react";
-import Input from "../common/input/Input";
+import Input from "../common/input/TextInput";
 import {
   FieldErrors,
   Path,

@@ -5,7 +5,7 @@ import {
   UseFormSetValue,
   UseFormWatch,
 } from "react-hook-form";
-import Input from "../common/input/Input";
+import Input from "../common/input/TextInput";
 
 interface NameSectionProps {
   register: UseFormRegister<SignUpFormData>;

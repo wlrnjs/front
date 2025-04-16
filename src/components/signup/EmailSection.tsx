@@ -5,7 +5,7 @@ import { cn } from "@/_utils/clsx";
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
 import VerificationSection from "./VerificationSection";
 import { useState } from "react";
-import Input from "../common/input/Input";
+import Input from "../common/input/TextInput";
 
 interface EmailSectionProps {
   register: UseFormRegister<SignUpFormData>;
