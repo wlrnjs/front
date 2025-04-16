@@ -68,9 +68,9 @@ const PasswordSection = ({
             </div>
           )}
         </div>
-        {/* <p className="text-[12px] text-fgGrayPlaceholder">
+        <p className="text-[12px] text-fgGrayPlaceholder">
           영문, 숫자, 특수문자를 조합하여 길이를 최소 8~10자리 이상
-        </p> */}
+        </p>
       </div>
       <ConfirmPasswordSection
         register={register}

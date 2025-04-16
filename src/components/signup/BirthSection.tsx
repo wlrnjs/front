@@ -1,13 +1,16 @@
+"use client";
+
 import React from "react";
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegister, UseFormWatch } from "react-hook-form";
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
 import MultiInput from "../common/input/MultiInput";
 
-const BirthSection = ({
-  register,
-}: {
+interface BirthSectionProps {
   register: UseFormRegister<SignUpFormData>;
-}) => {
+  watch: UseFormWatch<SignUpFormData>;
+}
+
+const BirthSection = ({ register }: BirthSectionProps) => {
   const birthInputs = [
     { placeholder: "YYYY", maxLength: 4, name: "birth.year" },
     { placeholder: "MM", maxLength: 2, name: "birth.month" },

@@ -1,5 +1,4 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import EmailSection from "@/components/signup/EmailSection";
@@ -14,6 +13,7 @@ import NextFind from "../find/NextFind";
 import SignUpGameModal from "../modal/SignUpGameModal";
 import { cn } from "@/_utils/clsx";
 import { useRouter } from "next/navigation";
+import { showToast } from "../common/Toast";
 
 const SignUpForm = () => {
   const {
@@ -22,15 +22,27 @@ const SignUpForm = () => {
     watch,
     setValue,
     formState: { errors, isValid },
-  } = useForm<SignUpFormData>({ mode: "onChange" });
+  } = useForm<SignUpFormData>({
+    mode: "onChange",
+  });
 
   const router = useRouter();
   const [favoriteGame, setFavoriteGame] = useState("");
   const [isGameModalOpen, setIsGameModalOpen] = useState(false);
 
+  const birth = watch("birth");
+
+  const isBirthComplete =
+    birth?.year?.length === 4 &&
+    birth?.month?.length === 2 &&
+    birth?.day?.length === 2;
+
+  const isFormReady = isBirthComplete && isValid;
+
   const onSubmit = (data: SignUpFormData) => {
     console.log("회원가입 제출 데이터:", data);
     router.push("/");
+    showToast("success", "회원가입이 완료되었습니다.", "");
   };
 
   return (
@@ -44,8 +56,8 @@ const SignUpForm = () => {
           errors={errors}
         />
         <NameSection register={register} watch={watch} setValue={setValue} />
-        <PhoneNumberSection register={register} />
-        <BirthSection register={register} />
+        <PhoneNumberSection register={register} watch={watch} />
+        <BirthSection register={register} watch={watch} />
         <FavoriteGameSection
           favoriteGame={favoriteGame}
           setIsGameModalOpen={setIsGameModalOpen}
@@ -60,10 +72,10 @@ const SignUpForm = () => {
         <div className="flex flex-col gap-5">
           <button
             type="submit"
-            disabled={!isValid}
+            disabled={!isFormReady}
             className={cn(
               "w-full min-h-[48px] px-3 rounded-[12px]",
-              isValid
+              isFormReady
                 ? "bg-fillPrimaryDefault text-fgPrimaryDefault"
                 : "bg-fillPrimaryDisabled text-fgPrimaryDisabled",
               "transition-colors"

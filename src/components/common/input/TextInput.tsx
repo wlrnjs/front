@@ -14,7 +14,7 @@ interface InputProps<T extends FieldValues> {
   placeholder?: string;
   register: UseFormRegister<T>;
   errors?: FieldErrors<T>;
-  className: string;
+  className: string; // 원래 필수 prop으로 복원
   required?: boolean;
   disabled?: boolean;
   autoFocus?: boolean;
@@ -33,10 +33,6 @@ const getValidationRules = <T extends FieldValues>(
 
   const rules: RegisterOptions<T, Path<T>> = {};
 
-  if (required) {
-    rules.required = "필수 입력 항목입니다";
-  }
-
   if (type === "email") {
     rules.pattern = {
       value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -45,7 +41,7 @@ const getValidationRules = <T extends FieldValues>(
   } else if (type === "password") {
     rules.pattern = {
       value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      message: "영문, 숫자, 특수문자를 조합하여 길이를 최소 8~10자리 이상",
+      message: "",
     };
   } else if (type === "name") {
     rules.minLength = {
@@ -83,21 +79,19 @@ const TextInput = <T extends FieldValues>({
           autoFocus={autoFocus}
           disabled={disabled}
           {...register(name, rules)}
-          className={className}
+          className={`${className} ${rightElement ? "pr-16" : ""}`} // 다중 아이콘을 위한 패딩 추가, 기존 스타일 유지
         />
         {rightElement && (
-          <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
             {rightElement}
           </div>
         )}
       </div>
-      <>
-        {errors?.[name] && (
-          <p className="text-[12px] text-fgGrayPlaceholder">
-            {errors[name]?.message as React.ReactNode}
-          </p>
-        )}
-      </>
+      {errors?.[name] && (
+        <p className="text-[12px] text-fgGrayPlaceholder">
+          {errors[name]?.message as React.ReactNode}
+        </p>
+      )}
     </div>
   );
 };

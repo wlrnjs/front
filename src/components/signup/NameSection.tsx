@@ -5,7 +5,7 @@ import {
   UseFormSetValue,
   UseFormWatch,
 } from "react-hook-form";
-import Input from "../common/input/TextInput";
+import TextInput from "../common/input/TextInput";
 
 interface NameSectionProps {
   register: UseFormRegister<SignUpFormData>;
@@ -25,7 +25,7 @@ const NameSection = ({ register, watch, setValue }: NameSectionProps) => {
       <label htmlFor="name" className="text-[18px] text-fgGrayDefault">
         이름
       </label>
-      <Input<SignUpFormData>
+      <TextInput<SignUpFormData>
         id="name"
         name="name"
         type="name"
