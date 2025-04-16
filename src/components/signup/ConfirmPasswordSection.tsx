@@ -1,7 +1,6 @@
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
 import CustomIcon from "@/Icons";
 import { useState } from "react";
-import Input from "../common/input/TextInput";
 import {
   FieldErrors,
   Path,
@@ -10,6 +9,7 @@ import {
   UseFormSetValue,
   UseFormWatch,
 } from "react-hook-form";
+import TextInput from "../common/input/TextInput";
 
 interface ConfirmPasswordSectionProps {
   register: UseFormRegister<SignUpFormData>;
@@ -64,10 +64,10 @@ const ConfirmPasswordSection = ({
       <label htmlFor="checkPassword" className="text-[18px] text-fgGrayDefault">
         비밀번호 확인
       </label>
-      <Input<SignUpFormData>
+      <TextInput<SignUpFormData>
         id="checkPassword"
         name="checkedPassword"
-        type={showPassword ? "text" : "password"}
+        type={showPassword ? "name" : "password"}
         placeholder="비밀번호를 한 번 더 입력해주세요."
         register={register}
         errors={errors}

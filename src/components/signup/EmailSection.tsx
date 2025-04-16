@@ -5,7 +5,7 @@ import { cn } from "@/_utils/clsx";
 import { SignUpFormData } from "@/_types/signup/SignUpFormData";
 import VerificationSection from "./VerificationSection";
 import { useState } from "react";
-import Input from "../common/input/TextInput";
+import TextInput from "../common/input/TextInput";
 
 interface EmailSectionProps {
   register: UseFormRegister<SignUpFormData>;
@@ -34,7 +34,7 @@ const EmailSection = ({ register, watch, errors }: EmailSectionProps) => {
           이메일
         </label>
         <div className="flex gap-2">
-          <Input
+          <TextInput
             id="email"
             name="email"
             type="email"

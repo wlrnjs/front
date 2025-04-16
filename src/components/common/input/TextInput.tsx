@@ -57,7 +57,7 @@ const getValidationRules = <T extends FieldValues>(
   return rules;
 };
 
-const Input = <T extends FieldValues>({
+const TextInput = <T extends FieldValues>({
   id,
   name,
   type = "email",
@@ -102,4 +102,4 @@ const Input = <T extends FieldValues>({
   );
 };
 
-export default Input;
+export default TextInput;

@@ -10,7 +10,7 @@ import {
   FieldErrors,
 } from "react-hook-form";
 import ConfirmPasswordSection from "./ConfirmPasswordSection";
-import Input from "../common/input/TextInput";
+import TextInput from "../common/input/TextInput";
 
 interface PasswordSectionProps {
   register: UseFormRegister<SignUpFormData>;
@@ -41,10 +41,10 @@ const PasswordSection = ({
           비밀번호
         </label>
         <div className="relative">
-          <Input<SignUpFormData>
+          <TextInput<SignUpFormData>
             id="password"
             name="password"
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? "name" : "password"}
             placeholder="비밀번호를 입력해주세요."
             register={register}
             errors={errors}
