@@ -21,7 +21,7 @@ const SignUpForm = () => {
     handleSubmit,
     watch,
     setValue,
-    formState: { isValid },
+    formState: { errors, isValid },
   } = useForm<SignUpFormData>({ mode: "onChange" });
 
   const router = useRouter();
@@ -36,11 +36,12 @@ const SignUpForm = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-        <EmailSection register={register} watch={watch} />
+        <EmailSection register={register} watch={watch} errors={errors} />
         <PasswordSection
           register={register}
           watch={watch}
           setValue={setValue}
+          errors={errors}
         />
         <NameSection register={register} watch={watch} setValue={setValue} />
         <PhoneNumberSection register={register} />
