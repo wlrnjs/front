@@ -10,7 +10,7 @@ import { ReactNode } from "react";
 interface InputProps<T extends FieldValues> {
   id: string;
   name: Path<T>;
-  type?: "text" | "email" | "password";
+  type?: "name" | "email" | "password";
   placeholder?: string;
   register: UseFormRegister<T>;
   errors?: FieldErrors<T>;
@@ -47,7 +47,7 @@ const getValidationRules = <T extends FieldValues>(
       value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       message: "영문, 숫자, 특수문자를 조합하여 길이를 최소 8~10자리 이상",
     };
-  } else if (type === "text") {
+  } else if (type === "name") {
     rules.minLength = {
       value: 2,
       message: "최소 2자 이상 입력해주세요",
@@ -60,7 +60,7 @@ const getValidationRules = <T extends FieldValues>(
 const Input = <T extends FieldValues>({
   id,
   name,
-  type = "text",
+  type = "email",
   placeholder,
   register,
   errors,
