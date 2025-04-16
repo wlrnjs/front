@@ -56,8 +56,8 @@ const SignUpForm = () => {
           errors={errors}
         />
         <NameSection register={register} watch={watch} setValue={setValue} />
-        <PhoneNumberSection register={register} watch={watch} />
-        <BirthSection register={register} watch={watch} />
+        <PhoneNumberSection register={register} />
+        <BirthSection register={register} />
         <FavoriteGameSection
           favoriteGame={favoriteGame}
           setIsGameModalOpen={setIsGameModalOpen}
