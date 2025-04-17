@@ -38,12 +38,14 @@ const LoginForm = () => {
   const router = useRouter();
 
   const onSubmit = (data: LoginFormData) => {
-    if (!isValid)
+    if (!isValid) {
       showToast(
         "warning",
         "로그인 정보를 확인해주세요.",
         "이메일 또는 비밀번호가 올바르지 않습니다."
       );
+    }
+
     console.log("Login:", data);
     router.push("/");
     showToast(
