@@ -76,7 +76,7 @@ const FindIdForm = ({ onSuccess }: FindIdFormProps) => {
             id="name"
             name="name"
             type="name"
-            placeholder="본인의 이름을 입력해주세요."
+            placeholder="이름을 입력해주세요."
             register={register as unknown as UseFormRegister<SignUpFormData>}
             className="w-full h-[48px] px-3 rounded-[12px] bg-fillGrayDefault focus:border focus:border-borderPrimary"
             required={true}
