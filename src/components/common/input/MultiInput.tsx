@@ -29,7 +29,6 @@ const MultiInput = React.forwardRef<HTMLInputElement, MultiInputProps>(
   (
     {
       label,
-      name,
       inputConfigs,
       register,
       showDash = false,
