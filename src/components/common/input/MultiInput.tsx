@@ -58,7 +58,10 @@ const MultiInput = React.forwardRef<HTMLInputElement, MultiInputProps>(
 
     return (
       <div className="flex flex-col gap-2">
-        <label htmlFor={name} className="text-[18px] text-fgGrayDefault">
+        <label
+          htmlFor={inputConfigs[0].name}
+          className="text-[18px] text-fgGrayDefault"
+        >
           {label}
         </label>
         <div className={`flex ${gapBetweenInputs} items-center`}>
