@@ -26,12 +26,12 @@ const FavoriteGameSection = ({
         readOnly
         className={cn("h-[48px] px-3 pr-10 rounded-[12px] bg-fillGrayDefault")}
         value={favoriteGame}
+        onClick={() => setIsGameModalOpen(true)}
         {...register("favoriteGame", { required: true })}
       />
       <button
         type="button"
         className="absolute right-2 bottom-[0.8px] -translate-y-1/2 transform"
-        onClick={() => setIsGameModalOpen(true)}
       >
         <CustomIcon icon="DROPDOWN_ARROW_SVG" className="w-[24px] h-[24px]" />
       </button>
